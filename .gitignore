@@ -1,0 +1,18 @@
+# Node
+node_modules/
+
+# Backend JSON storage (contains passwords, file data)
+users.json
+files.json
+logs.json
+
+# Environment / keys
+.env
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure File Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css"> 
+<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="app-header">
+        <h2 class="app-title">Secure File Management System</h2>
+        <p class="app-subtitle">Encrypted storage • Access control • Audit logs</p>
+    </header>
+
+    <div id="toggle-auth">
+        <button class="auth-toggle-btn" onclick="showSignup()">Signup</button>
+        <button class="auth-toggle-btn" onclick="showLogin()">Login</button>
+    </div>
+
+    <!-- SIGNUP -->
+    <div id="signup" class="section-card hidden">
+        <h3>Create Account</h3>
+        <input id="newUsername" placeholder="Username">
+        <input type="password" id="newPassword" placeholder="Password">
+        <button onclick="signup()">Signup</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="login" class="section-card hidden">
+        <h3>Login</h3>
+        <input id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="authenticate()">Next</button>
+    </div>
+
+    <!-- OTP -->
+    <div id="otpSection" class="section-card hidden">
+        <h3>Enter OTP</h3>
+        <p style="margin: 4px 0 6px; font-size: 0.85rem; color:#718096;">
+            Demo OTP (for testing): <b id="demoOtp"></b>
+        </p>
+        <input id="otpInput" placeholder="Enter OTP">
+        <button onclick="verifyOtp()">Verify</button>
+    </div>
+
+    <!-- AUTHENTICATED AREA -->
+    <div id="auth" class="section-card hidden">
+        <h3 style="margin-bottom: 4px;">
+            Welcome <span id="userDisplay"></span>
+        </h3>
+        <button id="logout" onclick="logout()">Logout</button>
+
+        <!-- ADMIN PANEL -->
+        <div id="adminSection" class="hidden">
+            <h3>Admin Panel</h3>
+            <button onclick="viewLogs()">View Security Logs</button>
+            <pre id="logsOutput"></pre>
+        </div>
+
+        <!-- FILE SECTION -->
+        <div id="file-section">
+            <h3 style="margin-top: 12px; margin-bottom: 6px;">Your Encrypted Files</h3>
+
+            <div class="file-actions">
+                <input type="file" id="fileInput" multiple>
+                <button onclick="encryptFiles()">Encrypt &amp; Save</button>
+            </div>
+
+            <div class="file-container">
+                <div class="file-category">
+                    <h4>Images</h4>
+                    <ul id="imageList"></ul>
+                </div>
+                <div class="file-category">
+                    <h4>Documents</h4>
+                    <ul id="documentList"></ul>
+                </div>
+                <div class="file-category">
+                    <h4>Others</h4>
+                    <ul id="otherList"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
